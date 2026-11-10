@@ -4,72 +4,202 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CozyCup Café</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>CozyCup Café</h1>
-
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="menu.html">Menu</a>
+    <!-- ===== Header and navigation (same on every page) ===== -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md container" aria-label="Main navigation">
+            <h1 class="m-0"><a class="navbar-brand" href="index.html">☕ CozyCup Café</a></h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Open menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="menu.html">Menu &amp; Order</a></li>
+                    <li class="nav-item"><a class="nav-link" href="reserve.html">Reserve a Table</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
     <main>
-
         <div class="container">
 
+            <!-- ===== 1. Hero: big title + two coffee beans ===== -->
             <section class="hero">
-                <h2>Welcome to CozyCup</h2>
-
-                <p>
-                    A small café for good coffee, sweet moments,
-                    and a cozy atmosphere.
-                </p>
-
-                <img src="images/cafe.jpe" alt="CozyCup Café" class="img-fluid rounded mb-4">
-
-                <br>
-
-                <a href="menu.html" class="btn btn-primary">
-                    View Our Menu
-                </a>
+                <div class="row align-items-center">
+                    <div class="col-lg-6 hero-text">
+                        <p class="small-label">CozyCup Café</p>
+                        <h2 class="big-title">Wake<br>the<br>beans</h2>
+                        <p>Fresh coffee, sweet desserts and a cozy place to stay. Scroll down and watch your cup being made.</p>
+                        <div>
+                            <a href="menu.html" class="btn btn-cozy">Order now</a>
+                            <a href="#story" class="btn btn-outline-cozy scroll-link">See the story ↓</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="bean-art" aria-hidden="true">
+                            <div class="big-bean bean-left"></div>
+                            <div class="big-bean bean-right"></div>
+                            <div class="particles">
+                                <span></span><span></span><span></span>
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
-            <section>
-                <h2>Why CozyCup?</h2>
+            <!-- ===== 2. Scroll story: the cup is made while you scroll ===== -->
+            <section class="story" id="story">
+                <div class="story-sticky">
+                    <div class="container">
+                        <div class="row align-items-center">
 
-                <div class="row">
+                            <div class="col-lg-6">
+                                <div class="chapter active">
+                                    <span class="chapter-num">1.</span>
+                                    <h2>Grind<br>the beans</h2>
+                                    <p>Every cup starts with beans roasted fresh every week.</p>
+                                </div>
+                                <div class="chapter">
+                                    <span class="chapter-num">2.</span>
+                                    <h2>Let it<br>pour</h2>
+                                    <p>Hot espresso slowly fills your cup. Keep scrolling!</p>
+                                </div>
+                                <div class="chapter">
+                                    <span class="chapter-num">3.</span>
+                                    <h2>Sip the<br>moment</h2>
+                                    <p>Your coffee is ready. Order it now and pick it up at the counter.</p>
+                                    <a href="menu.html" class="btn btn-cozy">Order my coffee</a>
+                                </div>
+                                <div class="story-progress" aria-hidden="true"><div id="storyBar"></div></div>
+                            </div>
 
+                            <div class="col-lg-6">
+                                <div class="coffee-scene" id="coffeeScene" aria-hidden="true">
+                                    <div class="machine"></div>
+                                    <div class="spout"></div>
+                                    <div class="scene-bean bean-a"></div>
+                                    <div class="scene-bean bean-b"></div>
+                                    <div class="scene-bean bean-c"></div>
+                                    <div class="stream"></div>
+                                    <div class="steam"><span></span><span></span><span></span></div>
+                                    <div class="heart">♥</div>
+                                    <div class="handle"></div>
+                                    <div class="cup"><div class="coffee" id="coffeeLevel"></div></div>
+                                    <div class="saucer"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== 3. Why CozyCup ===== -->
+            <section id="why">
+                <h2 class="section-title">Why CozyCup?</h2>
+                <div class="row g-4">
                     <div class="col-md-4">
-                        <h3>Fresh Coffee</h3>
-                        <p>Freshly prepared coffee every day.</p>
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">☕</div>
+                            <h3>Fresh Coffee</h3>
+                            <p>Beans roasted every week and brewed fresh for every cup.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">🍰</div>
+                            <h3>Sweet Moments</h3>
+                            <p>Homemade cheesecake, croissants and cookies baked every morning.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon" aria-hidden="true">🛋️</div>
+                            <h3>Cozy Place</h3>
+                            <p>Soft sofas, free Wi-Fi and sockets — a calm place to study or meet friends.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== 4. Opening hours ===== -->
+            <section id="hours">
+                <h2 class="section-title">Opening Hours</h2>
+                <div class="feature-card mx-auto" style="max-width: 420px;">
+                    <p class="mb-1"><strong>Monday – Friday:</strong> 08:00 – 22:00</p>
+                    <p class="mb-1"><strong>Saturday – Sunday:</strong> 09:00 – 22:00</p>
+                    <p id="openStatus" class="mt-3 mb-0 fw-bold"></p>
+                </div>
+            </section>
+
+            <!-- ===== 5. Questions (jQuery accordion) ===== -->
+            <section id="faq">
+                <h2 class="section-title">Questions</h2>
+                <div class="mx-auto" style="max-width: 720px;">
+
+                    <div class="faq-item">
+                        <button class="faq-question" type="button">
+                            Can I order ahead and pick up? <span aria-hidden="true">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. Add drinks and desserts to your order on the Menu page and pick them up at the counter.</p>
+                        </div>
                     </div>
 
-                    <div class="col-md-4">
-                        <h3>Sweet Moments</h3>
-                        <p>Enjoy delicious desserts with your drink.</p>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button">
+                            How many people can I book a table for? <span aria-hidden="true">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>From 1 to 10 guests. For bigger groups, please call us.</p>
+                        </div>
                     </div>
 
-                    <div class="col-md-4">
-                        <h3>Cozy Place</h3>
-                        <p>A comfortable place to study, relax, or meet friends.</p>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button">
+                            Do you have plant-based milk? <span aria-hidden="true">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes — oat and almond milk for any coffee drink at no extra cost.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" type="button">
+                            Is there Wi-Fi? <span aria-hidden="true">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Free Wi-Fi for all guests. Ask the barista for the password.</p>
+                        </div>
                     </div>
 
                 </div>
             </section>
 
         </div>
-
     </main>
 
+    <button id="backToTop" type="button" aria-label="Back to top">↑</button>
+
     <footer>
-        <p>© 2026 CozyCup Café</p>
+        <p>© 2026 CozyCup Café · Student project for WEB Technologies 1</p>
+        <p>Font: Playfair Display (Google Fonts). Icons: Unicode emoji. Libraries: Bootstrap 5, jQuery 3.
+           Code written with help from Claude (AI).</p>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>
