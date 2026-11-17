@@ -3,28 +3,27 @@
    "La carte du matin" list and the special of the day.
    ========================================================= */
 $(function () {
-  /* 1. morning menu: built from the MENU array */
+  /* 1. morning menu: picture cards built from the MENU array.
+        The description is hidden and slides up when the mouse is over the card. */
   const morningIds = ["creme", "aulait", "chocolat", "croissant", "painchoc", "tarte"];
-  const columns = [morningIds.slice(0, 3), morningIds.slice(3)];
   let html = "";
-  columns.forEach(function (ids, colIndex) {
-    html += '<div class="col-md-6 reveal' + (colIndex ? " delay-1" : "") + '">';
-    ids.forEach(function (id) {
-      const item = findItem(id);
-      html += '<div class="item-line">' +
-        '<span class="name">' + item.name + "<small>" + item.desc + "</small></span>" +
-        '<span class="leader" aria-hidden="true"></span>' +
-        '<span class="price">' + formatPrice(item.price) + "</span>" +
-        '<button type="button" class="mini-btn add js-add" data-id="' + item.id + '" aria-label="Add ' + item.name + ' to order" data-cursor="+">+</button>' +
-        "</div>";
-    });
-    html += "</div>";
+  morningIds.forEach(function (id, i) {
+    const item = findItem(id);
+    html += '<article class="treat reveal delay-' + (i % 3) + '" data-tilt="10" tabindex="0">' +
+      '<img src="images/' + item.img + '" alt="' + item.name + '" width="150" height="150">' +
+      '<div class="treat-info"><h3>' + item.name + '</h3><span class="price">' + formatPrice(item.price) + "</span></div>" +
+      '<p class="treat-desc">' + item.desc + "</p>" +
+      '<button type="button" class="treat-add js-add" data-id="' + item.id + '" aria-label="Add ' + item.name + ' to order" data-cursor="+">+</button>' +
+      "</article>";
   });
   $("#morningMenu").html(html);
+  if (window.ccAddTilt) window.ccAddTilt(document.getElementById("morningMenu"));
 
   $("#morningMenu").on("click", ".js-add", function () {
-    const item = findItem($(this).data("id"));
-    addToCart(item);
+    const $btn = $(this);
+    addToCart(findItem($btn.data("id")));
+    /* small jQuery "jump" so the visitor sees it worked */
+    $btn.stop(true, true).animate({ top: "-=8" }, 120).animate({ top: "+=8" }, 160);
   });
 
   /* 2. special of the day: chosen by the weekday */
