@@ -92,8 +92,6 @@ img { max-width: 100%; height: auto; }
 .page-head { padding: 64px 0 34px; text-align: center; }
 .page-head h1 { font-size: clamp(2.8rem, 7vw, 5rem); line-height: 1; margin: 10px 0 14px; }
 .page-head p { max-width: 640px; margin: 0 auto; }
-.ornament { display: flex; align-items: center; justify-content: center; gap: 12px; color: var(--gold); margin: 14px 0; }
-.ornament::before, .ornament::after { content: ""; width: 60px; height: 1px; background: currentColor; }
 
 /* ---------- 4. Buttons ---------- */
 .btn-cc, .btn-cc-outline {

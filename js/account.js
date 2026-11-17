@@ -104,6 +104,8 @@ $(function () {
     users.push(user);
     saveData(KEYS.users, users);
     saveData(KEYS.session, user.email);
-    window.location.href = "profile.html";
+    $("#signupForm button[type=submit]").prop("disabled", true);
+    showSuccess($("#signupOk"), "Bienvenue, " + escapeHtml(user.name.split(" ")[0]) + "! Your account is created. Opening your profile…");
+    setTimeout(function () { window.location.href = "profile.html"; }, 1200);
   });
 });
